@@ -4,6 +4,7 @@ export function isEqual(x, y) {
 	if (x === y) return true;
 	if (!(x instanceof Object) || !(y instanceof Object)) return false;
 	if (x.constructor !== y.constructor) return false;
+	if (typeof x === 'function' && typeof y === 'function' && x.prototype.constructor !== y.prototype.constructor) return false;
 
 	for (const p in x) {
 		if (!x.hasOwnProperty(p)) continue;
